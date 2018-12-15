@@ -28,8 +28,7 @@ TARGET_CFLAGS += -std=c99
 
 CONFIGURE_ARGS+= \
 	--disable-docs \
-	--disable-valgrind \
-	--with-oniguruma=builtin
+	--disable-valgrind
 
 define Package/jq
   SECTION:=utils
@@ -37,6 +36,7 @@ define Package/jq
   TITLE:=Lightweight and flexible command-line JSON processor.
   URL:=https://stedolan.github.io/jq/
   MAINTAINER:=Kiwina <me@kiwina.com>
+  DEPENDS:=+liboning
 endef
 
 define Package/jq/description
