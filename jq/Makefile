@@ -35,8 +35,8 @@ define Package/jq
   CATEGORY:=Utilities
   TITLE:=Lightweight and flexible command-line JSON processor.
   URL:=https://stedolan.github.io/jq/
-  MAINTAINER:=Kiwina <me@kiwina.com>
-  DEPENDS:=+liboning
+  MAINTAINER:=
+  DEPENDS:=+oniguruma
 endef
 
 define Package/jq/description
