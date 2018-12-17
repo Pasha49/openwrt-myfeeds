@@ -7,22 +7,20 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=onig
-PKG_VERSION:=6.9.1
+PKG_NAME:=liboning
+PKG_VERSION:=5.9.6
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+PKG_SOURCE:=oning-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/kkos/oniguruma/releases/download/v$(PKG_VERSION)/
-PKG_HASH:=a9240b653d02e8cfc52db48e8c4224426e528e1faa09b65e8ca08a197fad210b
+PKG_HASH:=d5642010336a6f68b7f2e34b1f1cb14be333e4d95c2ac02b38c162caf44e47a7
 PKG_MAINTAINER:=
 PKG_LICENSE:=
-
-PKG_FIXUP:=libtool autoreconf
 PKG_INSTALL:=1
 
 include $(INCLUDE_DIR)/package.mk
 
-define Package/oniguruma
+define Package/liboning
   SECTION:=libs
   CATEGORY:=Libraries
   TITLE:=Oniguruma is a modern and flexible regular expressions library
@@ -34,9 +32,9 @@ define Package/oniguruma/description
 	It encompasses features from different regular expression
 	implementations that traditionally exist in different languages.
 endef
-
-TARGET_CFLAGS += $(FPIC)
-
+define Build/Compile
+	$(call Build/Compile/Default)
+endef
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include
 	$(CP) $(PKG_INSTALL_DIR)/usr/include/onig*.h $(1)/usr/include/
@@ -51,9 +49,9 @@ define Build/UninstallDev
 	$(STAGING_DIR)/usr/lib/libonig.{a,so*}
 endef
 
-define Package/confuse/install
+define Package/liboning/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libonig.so.* $(1)/usr/lib/
 endef
 
-$(eval $(call BuildPackage,oniguruma))
+$(eval $(call BuildPackage,liboning))
